@@ -1,0 +1,25 @@
+[user]
+	name = wongoo
+	email = gelnyang@163.com
+
+[credential]
+	helper = store
+
+[core]
+	autocrlf = input
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[url "git@git.luckincoffee.com:"]
+	insteadOf = http://git.luckincoffee.com/
+
+[https]
+	proxy = https://127.0.0.1:7777
+
