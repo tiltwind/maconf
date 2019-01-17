@@ -68,9 +68,19 @@ Add a SS server, then `Turn Shadowsocks On`.
 
 @@sina.com
 @@163.com
+@@luckincoffee.com
+@@git.luckincoffee.com
 
 twitter.com
 youtube.com
 ||google.com
 ||wikipedia.org
+||s3.amazonaws.com
+||github-cloud.s3.amazonaws.com
+||golang.org
+||github.com
+||cloudfront.net
+||google.com
+||google.com.hk
+
 ```
