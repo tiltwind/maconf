@@ -1,10 +1,10 @@
 
 basic:
 - shadowsocks
-- [git](https://git-scm.com/download/mac)
-- [iterm2](https://www.iterm2.com/downloads.html)
+- [git](https://git-scm.com/download/mac), add `~/.gitconfig`, copy old ssh keys to `~/.ssh`
+- [iterm2](https://www.iterm2.com/downloads.html), see [install steps](vim/vim-install.md) 
 - xcode-select --install
-- homebrew: https://docs.brew.sh/Installation 
+- [homebrew](https://docs.brew.sh/Installation)
 - chrome
 - firefox
 - xunlei
@@ -12,11 +12,10 @@ basic:
 develop:
 - jdk: [openjdk](https://jdk.java.net/) 
 - golang: [check version](https://github.com/golang/go/releases), [install guide](https://github.com/wongoo/doc/blob/master/lang/go/go-install.md)
-- .zshrc
-- vim: vimrc
-- nvim: `brew install neovim`, then config follow [FAQ](https://github.com/neovim/neovim/wiki/FAQ)
+- python: `brew install python3`
+- [vim](vim/)
+- nvim: `brew install neovim`, add `~/.config/nvim/init.vim` following [FAQ](https://github.com/neovim/neovim/wiki/FAQ)
 - npm
-- ssh keys: copy from old machine
 - goland
 - clion
 - inteliJ IDEA CE

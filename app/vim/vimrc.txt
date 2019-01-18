@@ -22,28 +22,7 @@ let NERDTreeShowBookmarks=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
  
 
-" -----------------------------------------
-" https://github.com/fatih/vim-go-tutorial/blob/master/vimrc
-
-" A sensible vimrc for Go development
-"
-" Please note that the following settings are some default that I used
-" for years. However it might be not the case for you (and your
-" environment). I highly encourage to change/adapt the vimrc to your own
-" needs. Think of a vimrc as a garden that needs to be maintained and fostered
-" throughout years. Keep it clean and useful - Fatih Arslan
-
-call plug#begin()
-Plug 'fatih/vim-go'
-Plug 'fatih/molokai'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'SirVer/ultisnips'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'sebdah/vim-delve'
-" Plugin 'Chiel92/vim-autoformat'
-call plug#end()
-
+" 
 """"""""""""""""""""""
 "      Settings      "
 """"""""""""""""""""""
@@ -234,5 +213,4 @@ autocmd BufWritePre *.css :call CSSBeautify()
 " autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
 " autocmd FileType html nmap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
 " autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
-
 
