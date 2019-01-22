@@ -20,7 +20,7 @@ git clone --depth=20 https://github.com/mdempsky/gocode
 git clone --depth=20 https://github.com/sebdah/vim-delve 
 git clone --depth=20 https://github.com/scrooloose/nerdtree.git 
 git clone --depth=20 https://github.com/MarcWeber/vim-addon-mw-utils.git
-git clone --depth=20 https://github.com/garbas/vim-snipmate.git
+git clone --depth=20 https://github.com/honza/vim-snippets.git
 ```
 
 using `:GoInstallBinaries` to install golang plugins 
