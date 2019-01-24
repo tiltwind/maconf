@@ -24,6 +24,9 @@ develop:
 - studio 3T
 - [maven](https://maven.apache.org/download.cgi)
 - [sublime text](https://www.sublimetext.com/3)
+- [redis](redis/redis.md)
+- mongodb
+- docker
 
 office:
 - wechat
