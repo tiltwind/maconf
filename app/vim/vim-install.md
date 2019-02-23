@@ -25,6 +25,24 @@ git clone --depth=20 https://github.com/honza/vim-snippets.git
 
 using `:GoInstallBinaries` to install golang plugins 
 
+### vim-jsbeautify
+```
+cd ~/.vim/pack/plugins/start 
+
+# download plugin vim-jsbeautify/plugin/beautifier.vim
+git clone --depth=10 https://github.com/maksimr/vim-jsbeautify.git
+
+# download js-beautify
+wget https://github.com/beautify-web/js-beautify/archive/v1.8.9.zip
+unzip v1.8.9.zip 
+
+mkidr -p vim-jsbeautify/plugin/lib/js/lib
+cp js-beautify-1.8.9/js/lib/*.js  vim-jsbeautify/plugin/lib/js/lib
+
+# edit .editorconfig
+# change all indent-size to 2
+```
+
 ## alias
 
 add following into .zshrc:
