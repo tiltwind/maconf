@@ -1,8 +1,7 @@
 "语言设置
 set encoding=utf-8
 set termencoding=utf-8
-set fileencoding=chinese
-set fileencodings=ucs-bom,utf-8,chinese
+set fileencodings=utf-8
 set langmenu=zh_CN.utf-8
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -33,7 +32,6 @@ set ttyfast                     " Indicate fast terminal conn for faster redraw
 " set ttymouse=xterm2             " Indicate terminal type for mouse codes
 " set ttyscroll=3                 " Speedup scrolling
 set laststatus=2                " Show status line always
-set encoding=utf-8              " Set default encoding to UTF-8
 set autoread                    " Automatically read changed files
 set autoindent                  " Enabile Autoindent
 set backspace=indent,eol,start  " Makes backspace key more powerful.
@@ -205,6 +203,7 @@ endfunction
 " map <c-f> :call JsBeautify()<cr>
 autocmd BufWritePre *.js :call JsBeautify()
 autocmd BufWritePre *.html :call HtmlBeautify()
+autocmd BufWritePre *.vue :call HtmlBeautify()
 autocmd BufWritePre *.json :call JsonBeautify()
 autocmd BufWritePre *.css :call CSSBeautify()
 " autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
