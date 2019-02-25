@@ -34,14 +34,18 @@ cd ~/.vim/pack/plugins/start
 git clone --depth=10 https://github.com/maksimr/vim-jsbeautify.git
 
 # download js-beautify
-wget https://github.com/beautify-web/js-beautify/archive/v1.8.9.zip
-unzip v1.8.9.zip 
+# see: https://github.com/beautify-web/js-beautify/releases
+jsbeautify_version=1.9.0-beta5
+wget https://github.com/beautify-web/js-beautify/archive/v${jsbeautify_version}.zip
+unzip v${jsbeautify_version}.zip 
 
 mkidr -p vim-jsbeautify/plugin/lib/js/lib
-cp js-beautify-1.8.9/js/lib/*.js  vim-jsbeautify/plugin/lib/js/lib
+cp js-beautify-${jsbeautify_version}/js/lib/*.js  vim-jsbeautify/plugin/lib/js/lib
 
 # edit .editorconfig
 # change all indent-size to 2
+
+# note: you can add .editorconfig in your project
 ```
 
 ## alias
