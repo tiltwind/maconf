@@ -14,6 +14,7 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 
 let NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=1
 
 " 打开vim时自动打开NERDTree
 " autocmd VimEnter * NERDTree
@@ -202,10 +203,11 @@ endfunction
 " -----------------------
 " map <c-f> :call JsBeautify()<cr>
 autocmd BufWritePre *.js :call JsBeautify()
+autocmd BufWritePre *.jsx :call JsBeautify()
 autocmd BufWritePre *.html :call HtmlBeautify()
-autocmd BufWritePre *.vue :call HtmlBeautify()
 autocmd BufWritePre *.json :call JsonBeautify()
 autocmd BufWritePre *.css :call CSSBeautify()
+" autocmd BufWritePre *.vue :call HtmlBeautify() 
 " autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
 " autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
 " autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
