@@ -1,0 +1,41 @@
+# System-wide .profile for sh(1)
+
+if [ -x /usr/libexec/path_helper ]; then
+	eval `/usr/libexec/path_helper -s`
+fi
+
+if [ "${BASH-no}" != "no" ]; then
+	[ -r /etc/bashrc ] && . /etc/bashrc
+fi
+
+
+
+export GOPATH=/go
+export GOBIN=$GOPATH/bin
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin:$GOBIN
+export GO111MODULE=on
+
+#export JAVA_HOME=/Applications/java/jdk-11.0.2.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home
+export PATH=$PATH:$JAVA_HOME/bin
+
+alias ll="ls -al"
+alias vi="nvim"
+alias vim="nvim"
+alias tailf="tail -f"
+
+export PATH=$PATH:/usr/local/homebrew/bin
+export PATH=$PATH:/app/maven/bin
+export PATH="$PATH:/usr/local/homebrew/opt/openssl/bin"
+export PATH=$PATH:/app/mongodb/bin
+export PATH=$PATH:$HOME/.pub-cache/bin
+export PATH=$PATH:/usr/local/protoc/bin
+
+. ~/script/base64-functions.sh    
+. ~/script/git-functions.sh       
+. ~/script/go-functions.sh        
+. ~/script/httpproxy-functions.sh 
+. ~/script/multidir-functions.sh  
+. ~/script/vmplat.sh
+
