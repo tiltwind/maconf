@@ -37,5 +37,4 @@ export PATH=$PATH:/usr/local/protoc/bin
 . ~/script/go-functions.sh        
 . ~/script/httpproxy-functions.sh 
 . ~/script/multidir-functions.sh  
-. ~/script/vmplat.sh
 
