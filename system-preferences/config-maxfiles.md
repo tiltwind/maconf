@@ -39,7 +39,17 @@ sudo launchctl limit maxfiles 1000000 2000000
 sudo ulimit -n 1000000 # 此值不能大于kern.maxfilesperproc
 ```
 
-### 永久设置
+### 永久设置方法（一）
+
+文件/etc/sysctl.conf添加:
+```
+kern.maxfiles=2000000
+kern.maxfilesperproc=1000000
+```
+
+文件 /etc/profile 添加: ulimit -n 1000000
+
+### 永久设置方式（二）
 
 maxfiles:
 ```
