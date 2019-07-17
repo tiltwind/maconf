@@ -1,3 +1,10 @@
+<!---
+markmeta_author: wongoo
+markmeta_date: 2019-07-17
+markmeta_title: redis install
+markmeta_categories: app
+markmeta_tags: redis
+-->
 
 # install redis:
 

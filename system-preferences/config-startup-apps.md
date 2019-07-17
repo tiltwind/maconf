@@ -1,3 +1,10 @@
+<!---
+markmeta_author: wongoo
+markmeta_date: 2019-07-17
+markmeta_title: How to config startup apps
+markmeta_categories: perferences
+markmeta_tags: config
+-->
 
 # How to config startup apps
 

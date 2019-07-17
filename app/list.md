@@ -1,3 +1,10 @@
+<!---
+markmeta_author: wongoo
+markmeta_date: 2019-07-17
+markmeta_title: mac 应用列表
+markmeta_categories: app
+markmeta_tags: app
+-->
 
 basic:
 - shadowsocks
@@ -50,6 +57,10 @@ entertaiment:
 - iqiyi
 - tencent video
 - netease music
+
+tools:
+- [aria2](aria2.md)
+- [sshpass](sshpass.md)
 
 
 

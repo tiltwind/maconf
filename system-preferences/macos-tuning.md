@@ -1,3 +1,10 @@
+<!---
+markmeta_author: wongoo
+markmeta_date: 2019-07-17
+markmeta_title: macOS tunning
+markmeta_categories: perferences
+markmeta_tags: tunning
+-->
 
 # macOS tunning
 

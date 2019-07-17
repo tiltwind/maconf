@@ -1,3 +1,11 @@
+<!---
+markmeta_author: wongoo
+markmeta_date: 2019-07-17
+markmeta_title: shadownsocks
+markmeta_categories: app
+markmeta_tags: shadownsocks
+-->
+
 # Shadowsocks
 
 ## 1. install shadowsocks server
