@@ -6,7 +6,7 @@ curl -O https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.17-macos10.14-x86_6
 
 tar -xvf mysql-*.tar.gz 
 
-sudo mv mysql-5.7.19-macos10.12-x86_64 /usr/local/mysql
+sudo mv mysql-8.0.17-macos10.14-x86_64 /usr/local/mysql
 ```
 
 ## configuration
@@ -54,7 +54,7 @@ sudo mysqld --initialize --user=mysql
 2017-10-01T07:43:28.114923Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
 2017-10-01T07:43:28.180792Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: 36b0e50e-a67c-11e7-b10e-01e26d7c2546.
 2017-10-01T07:43:28.198305Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
-2017-10-01T07:43:28.203532Z 1 [Note] A temporary password is generated for root@localhost: P0nrsPiTuq<4
+2017-10-01T07:43:28.203532Z 1 [Note] A temporary password is generated for root@localhost:  HdK!uzyRf8CD
 ➜  mysql
 ```
 
@@ -66,12 +66,16 @@ sudo mysqld --user=root &
 ## change password:
 ```
 mysql -uroot -p
-   #输入数据库初始化时产生的密码：P0nrsPiTuq<4
+   #输入数据库初始化时产生的密码： HdK!uzyRf8CD
    #-------------------
-   #如果连接发生这样的错误，尝试以下方式解决：ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
-   #chown -R mysql:mysql /var/lib/mysql
-   #ln -s /var/lib/mysql/mysql.sock /tmp/mysql.sock
-SET PASSWORD FOR 'root'@'localhost' = PASSWORD('p0ss0rd');
+   # 如果连接发生这样的错误，尝试以下方式解决：ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+   # sudo chown -R mysql:mysql /var/lib/mysql
+   # ln -s /var/lib/mysql/mysql.sock /tmp/mysql.sock
+
+# SET PASSWORD FOR 'root'@'localhost' = PASSWORD('p0ss0rd');
+
+SET PASSWORD FOR 'root'@'localhost' = 'p0ss0rd';
+ALTER USER 'root'@'localhost' PASSWORD EXPIRE NEVER;
 ```
 
 ## create db user:
