@@ -2,7 +2,10 @@
 
 ## download:
 ```
-curl -O https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.17-macos10.14-x86_64.tar.gz
+curl -C - -O https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.17-macos10.14-x86_64.tar.gz
+
+# linux
+# curl -C - -O https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.17-linux-glibc2.12-x86_64.tar.xz
 
 tar -xvf mysql-*.tar.gz 
 
