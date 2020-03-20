@@ -10,3 +10,7 @@ function decode64(){
   echo $s
   echo $s | pbcopy
 }
+
+func hex2base64(){
+	echo "$1" | xxd -r -p | base64
+}
