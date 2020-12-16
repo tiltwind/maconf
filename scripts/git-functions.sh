@@ -34,3 +34,19 @@ function gpush() {
 function gmpush() {
     multidircmd 2 gpush $@
 }
+
+function gmerge() {
+    git checkout $1
+    git pull -v
+    git push origin $1:$2
+    if [ $? -eq 0 ]; then
+    	echo "merged"
+    else
+    	git checkout $2
+    	git pull -v
+    	git merge $1 --commit --no-edit
+    	git push -v
+    	git checkout $1
+    fi
+}
+

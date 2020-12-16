@@ -10,15 +10,17 @@ sudo scutil --set ComputerName xxxxx
 
 ## brew 加速
 
-```bash
-# 替换成国内源：
-cd "$(brew --repo)" 
-# git remote set-url origin https://github.com/Homebrew/brew.git
-git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+替换成国内源:
 
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core" 
-# git remote set-url origin https://github.com/Homebrew/homebrew-core.git
-git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+```bash
+# https://github.com/Homebrew/brew.git
+git -C "$(brew --repo)" remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+
+# https://github.com/Homebrew/homebrew-core.git
+git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+
+# https://github.com/Homebrew/homebrew-cask.git
+git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
 
 # 替换Homebrew Bottles源
 echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.zshrc
@@ -27,7 +29,7 @@ cd ~
 source ~/.zshrc
 
 # 再更新一下试试看效果 注意网速 应该可以跑满
-brew update
+brew update -v
 ```
 
 ## 常见技巧
