@@ -8,16 +8,32 @@ markmeta_tags: tunning
 
 # macOS tunning
 
+## 查看及设置参数
+
+```bash
+
+# 查看
+sysctl net.inet.ip.portrange.first
+sysctl net.inet.ip.portrange
+
+# 设置
+sudo sysctl net.inet.ip.portrange.first=xxx
+```
+
 ## 常用设置
 
-```
-net.inet.ip.portrange.first: 10000
-net.inet.ip.portrange.hifirst: 10000
-net.inet.tcp.msl=1000
+```bash
+sudo net.inet.ip.portrange.first=10000
+sudo net.inet.ip.portrange.hifirst=10000
+sudo net.inet.tcp.msl=1000
 
-kern.ipc.maxsockbuf=8000000
-net.inet.tcp.sendspace=65536
-net.inet.tcp.recvspace=65536
+sudo kern.ipc.maxsockbuf=8000000
+sudo net.inet.tcp.sendspace=65536
+sudo net.inet.tcp.recvspace=65536
+
+sudo sysctl kern.maxfiles=20480
+sudo kern.maxproc = 4096
+sudo kern.maxprocperuid = 2048
 ```
 
 ## net.inet.tcp.delayed_ack
@@ -61,7 +77,9 @@ net.inet.tcp.recvspace=65536
 - 允许系统执行最多的进程(processes) : kern.maxproc=2048
 - 允许使用者执行最多的进程(processes): kern.maxprocperuid=500
 
-```
+```bash
+sysctl kern.maxproc kern.maxprocperuid
+
 default=
 kern.maxproc = 532
 kern.maxprocperuid = 100
@@ -71,13 +89,15 @@ kern.maxprocperuid = 100
 是用来控制 TCP 及 UDP 所使用的 port 范围，这个范围被分成三个部份，低范围、默认范围、及高范围。
 让我们看一下目前各范围 port 的情形：
 
-```
-net.inet.ip.portrange.first: 49152
-net.inet.ip.portrange.hifirst: 49152
-net.inet.ip.portrange.hilast: 65535
-net.inet.ip.portrange.last: 65535
-net.inet.ip.portrange.lowfirst: 1023
-net.inet.ip.portrange.lowlast: 600
+```bash
+sysctl net.inet.ip.portrange
+
+sudo sysctl net.inet.ip.portrange.lowfirst=1023
+sudo sysctl net.inet.ip.portrange.lowlast=600
+sudo sysctl net.inet.ip.portrange.first=1024
+sudo sysctl net.inet.ip.portrange.last=65535
+sudo sysctl net.inet.ip.portrange.hifirst=49152
+sudo sysctl net.inet.ip.portrange.hilast=65535
 
 default=
 net.inet.ip.portrange.first: 49152
