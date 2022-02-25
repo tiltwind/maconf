@@ -47,6 +47,7 @@ document:
 - kindle
 - xmind
 - airmail 3
+- 注重效率和体验的笔记软件，个人免费: https://obsidian.md/
 
 management:
 - recess
