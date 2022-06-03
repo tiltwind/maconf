@@ -12,4 +12,7 @@ my mac config
 - open command tool: `command + shift + p`#
 - input `screenshot`, choose the `Capture full size screenshot`
 
+# Application Management
+
+- update all software: `softwareupdate --all --install --force`
 
