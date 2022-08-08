@@ -6,7 +6,7 @@ markmeta_categories: app
 markmeta_tags: app
 -->
 
-basic:
+# basic:
 - shadowsocks
 - [git](https://git-scm.com/download/mac), add `~/.gitconfig`, copy old ssh keys to `~/.ssh`
 - [iterm2](https://www.iterm2.com/downloads.html), see [install steps](vim/vim-install.md) 
@@ -16,10 +16,18 @@ basic:
 - firefox
 - xunlei
 
-develop:
+
+# management:
+- recess
+- Tencent Lemon Lite: 腾讯系统清理优化软件，免费
+- cleanmydrive : 系统清理软件，收费
+
+
+# develop:
 - jdk: [openjdk](https://jdk.java.net/) 
 - golang: [check version](https://github.com/golang/go/releases), [install guide](https://github.com/wongoo/doc/blob/master/lang/go/go-install.md)
 - python: `brew install python3`
+- rust
 - [vim](vim/)
 - nvim: `brew install neovim`, add `~/.config/nvim/init.vim` following [FAQ](https://github.com/neovim/neovim/wiki/FAQ)
 - npm
@@ -27,38 +35,40 @@ develop:
 - clion
 - inteliJ IDEA CE
 - postman
-- navicat premium
-- studio 3T
+- navicat premium： 收费
+- Beekeeper Studio: mysql 客户端，免费
+- studio 3T： mongodb客户端
 - [maven](https://maven.apache.org/download.cgi)
-- [sublime text](https://www.sublimetext.com/3)
+- [sublime text](https://www.sublimetext.com/)
 - [redis](redis/redis.md)
 - mongodb
 - docker
 
-office:
+# office:
 - wechat
 - qq
-- mingdao
+- lark: 飞书
+- dingding: 钉钉
+- mingdao: 敏捷工具，看公司需要什么
 
-document:
+# document:
+- 注重效率和体验的笔记软件，个人免费: https://obsidian.md/
 - wps
 - youdao note
 - youdao dict
-- kindle
-- xmind
-- airmail 3
+- kindle: 电子书阅读
+- xmind: 思维导图，目前
+- 网易邮箱大师
+- airmail 3： 邮箱客户端的另一个选择
 
-management:
-- recess
-- cleanmydrive 2
 
-entertaiment:
+# entertaiment:
 - youku
 - iqiyi
 - tencent video
 - netease music
 
-tools:
+# tools:
 - [aria2](aria2.md)
 - [sshpass](sshpass.md)
 

@@ -18,4 +18,7 @@ system_profiler SPApplicationsDataType|sed -n 's/^ *Location: \(.*\)/\1/p' | sor
 - open command tool: `command + shift + p`#
 - input `screenshot`, choose the `Capture full size screenshot`
 
+# Application Management
+
+- update all software: `softwareupdate --all --install --force`
 
