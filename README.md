@@ -5,6 +5,12 @@ my mac config
 
 - Tencent Lemon Cleanner (Lite) : Clean up and free up space
 
+# view all app under mac
+
+```bash
+system_profiler SPApplicationsDataType|sed -n 's/^ *Location: \(.*\)/\1/p' | sort > apps.txt
+```
+
 # experience
 
 1. chrome full screen capture:

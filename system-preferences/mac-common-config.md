@@ -36,3 +36,14 @@ brew update -v
 
 - 重启Mac，按住Option键进入启动盘选择模式
 - 按⌘ +R进入Recovery模式
+
+## 重制权限
+
+```bash
+# 屏幕权限重置,之前分配给应用的权限都将失效，需要重新配置
+# 有时系统分配权限不生效，采用这种重新分配的方式可以解决.
+tccutil reset ScreenCapture  
+
+# 辅助功能重置 
+tccutil reset Accessibility
+```
