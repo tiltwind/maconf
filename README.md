@@ -1,8 +1,8 @@
 # my mac config
 
-- [system performances](system-performances)
-- [apps](app)
-- [scripts](scripts)
+- [System-preferences](system-preferences)
+- [Apps](app)
+- [Scripts](scripts)
 - [etc](etc)
 
 
