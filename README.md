@@ -23,7 +23,15 @@ system_profiler SPApplicationsDataType|sed -n 's/^ *Location: \(.*\)/\1/p' | sor
 - open command tool: `command + shift + p`#
 - input `screenshot`, choose the `Capture full size screenshot`
 
+
 ## Application Management
 
 - update all software: `softwareupdate --all --install --force`
 
+
+## System Control
+
+- restart Mac, then 
+	- press `Command-R`：从内建 macOS 恢复系统启动。使用此按键组合来重新安装之前安装在系统上的最新 macOS，或使用 macOS 恢复中的其他 App。
+	- press `Option-Command-R`：通过互联网从 macOS 恢复启动。使用此按键组合来重新安装 macOS 并升级到与你 Mac 兼容的最新版本 macOS。
+	- press `Option-Shift-Command-R`：通过互联网从 macOS 恢复启动。使用此按键组合来重新安装随 Mac 预装的 macOS 版本或仍可用的最接近版本。

@@ -75,6 +75,7 @@ markmeta_tags: app
 # tools
 - [aria2](aria2.md)
 - [sshpass](sshpass.md)
+- ngrok, 反向代理工具，完成内网穿透，暴露本地服务的公网访问入口，该工具仅适用于开发测试阶段。https://dashboard.ngrok.com/get-started/setup
 
 
 
