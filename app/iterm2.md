@@ -8,24 +8,27 @@ markmeta_tags: iterm2
 
 # iterm2 
 
-## install
-```
-brew install zsh
 
+## install
+
+download: https://www.iterm2.com/downloads.html
+
+## install zsh
+```bash
+brew install zsh
+```
+
+## install oh-my-zsh
+
+```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-```
+# ----> change theme
+# edit `~/.zshrc`:
 
-## change theme
-edit `~/.zshrc`:
-
-```
 ZSH_THEME="agnoster"
-```
 
-change theme config:
-```bash
-
+# ------> change theme config:
 cd .oh-my-zsh/themes
 vi agnoster.zsh-theme
 
