@@ -22,3 +22,24 @@ edit `~/.zshrc`:
 ```
 ZSH_THEME="agnoster"
 ```
+
+change theme config:
+```bash
+
+cd .oh-my-zsh/themes
+vi agnoster.zsh-theme
+
+## Main prompt
+build_prompt() {
+  RETVAL=$?
+  prompt_status 
+  prompt_virtualenv
+  prompt_aws
+  # prompt_context   ----> 注释掉这一行
+  prompt_dir
+  prompt_git
+  prompt_bzr
+  prompt_hg
+  prompt_end
+}
+```
