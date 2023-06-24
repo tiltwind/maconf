@@ -12,7 +12,7 @@ markmeta_tags: app
 - shadowsocks
 - [git](https://git-scm.com/download/mac), add `~/.gitconfig`, copy old ssh keys to `~/.ssh`
   - [A syntax-highlighting pager for git, diff, and grep output](https://dandavison.github.io/delta/introduction.html)
-- [iterm2](https://www.iterm2.com/downloads.html), see [install steps](vim/vim-install.md) 
+- [iterm2](iterm2.md), see [install steps](vim/vim-install.md) 
 - xcode-select --install
 - ~~[homebrew](https://docs.brew.sh/Installation),brew不建议使用,更建议使用macport~~
 - [macport](https://www.macports.org/install.php)
