@@ -28,6 +28,13 @@ markmeta_tags: app
 
 
 ## apps for development
+- sdkman: https://sdkman.io/install
+```bash
+curl -s "https://get.sdkman.io" | bash`
+sdk install java
+sdk install maven
+```
+
 - jdk: [openjdk](https://jdk.java.net/) 
 - golang: [check version](https://github.com/golang/go/releases), [install guide](https://github.com/wongoo/doc/blob/master/lang/go/go-install.md)
 - python: `brew install python3`
