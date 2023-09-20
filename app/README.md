@@ -9,17 +9,22 @@ markmeta_tags: app
 # install apps
 
 ## basic apps
-- shadowsocks
+
 - [git](https://git-scm.com/download/mac), add `~/.gitconfig`, copy old ssh keys to `~/.ssh`
   - [A syntax-highlighting pager for git, diff, and grep output](https://dandavison.github.io/delta/introduction.html)
-- [iterm2](iterm2.md), see [install steps](vim/vim-install.md) 
+- [iterm2](iterm2.md), see [install steps](vim/vim-install.md)
+  - [vim](vim/)
+  - nvim: `sudo port install neovim`, add `~/.config/nvim/init.vim` following [FAQ](https://github.com/neovim/neovim/wiki/FAQ)
 - xcode-select --install
-- ~~[homebrew](https://docs.brew.sh/Installation),brew不建议使用,更建议使用macport~~
 - [macport](https://www.macports.org/install.php)
 - chrome
 - firefox
 - xunlei
+- clashx
+- [sublime text](https://www.sublimetext.com/)
 
+- ~~[homebrew](https://docs.brew.sh/Installation),brew不建议使用,更建议使用macport~~
+- ~~shadowsocks~~
 
 ## apps for management
 - recess
@@ -39,18 +44,15 @@ sdk install maven
 - golang: [check version](https://github.com/golang/go/releases), [install guide](https://github.com/wongoo/doc/blob/master/lang/go/go-install.md)
 - python: `brew install python3`
 - rust
-- [vim](vim/)
-- nvim: `brew install neovim`, add `~/.config/nvim/init.vim` following [FAQ](https://github.com/neovim/neovim/wiki/FAQ)
 - npm
 - goland
 - clion
-- inteliJ IDEA CE
+- inteliJ IDEA
 - postman
 - navicat premium： 收费
 - Beekeeper Studio: mysql 客户端，免费
 - studio 3T： mongodb客户端
 - [maven](https://maven.apache.org/download.cgi)
-- [sublime text](https://www.sublimetext.com/)
 - [redis](redis/redis.md)
 - mongodb
 - docker
@@ -71,6 +73,7 @@ sdk install maven
 - xmind: 思维导图，目前
 - 网易邮箱大师
 - airmail 3： 邮箱客户端的另一个选择
+- KeyKey Typing Tutor: 是一款Mac OS X 上优秀的键盘打字练习工具
 
 
 ## apps for entertaiment
@@ -83,7 +86,7 @@ sdk install maven
 - [aria2](aria2.md)
 - [sshpass](sshpass.md)
 - ngrok, 反向代理工具，完成内网穿透，暴露本地服务的公网访问入口，该工具仅适用于开发测试阶段。https://dashboard.ngrok.com/get-started/setup
-
+- https://tabserve.dev/, 网页版反向代理工具,  A secure & fast HTTPS URL for localhost using your browser as a reverse proxy.
 
 
 
