@@ -74,6 +74,12 @@ sdk install maven
 - 网易邮箱大师
 - airmail 3： 邮箱客户端的另一个选择
 - KeyKey Typing Tutor: 是一款Mac OS X 上优秀的键盘打字练习工具
+- pandoc, 支持markdown 转换操作
+```bash
+sudo port install pandoc
+pandoc --from markdown --to epub3 book.md --output book.epub --toc --epub-cover-image=img/cover.png
+pandoc --from markdown --to epub3 战略.md --output 战略.epub --toc --epub-cover-image=/Users/gelnyang/Downloads/strategy.webp
+```
 
 
 ## apps for entertaiment
