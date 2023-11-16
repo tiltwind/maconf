@@ -1,14 +1,34 @@
 # clash simple guide
 
-## How Clash works
+## 购买代理服务
 
-![](https://dreamacro.github.io/clash/assets/connection-flow.a72146ab.png)
+购买代理服务, 比如 [speedcat](https://speedcat-aff.com/auth/register?code=59n8)
 
-## install
+购买后获得 clash 订阅链接。
+
+## 安装使用
 ```bash
+# 安装
 go install github.com/Dreamacro/clash@latest
-clash -f ./config.yaml
+go install github.com/MerlinKodo/clash-rev@latest
+
+# 默认配置目录为 ~/.config/clash
+
+# 购买代理服务并下载配置
+curl --output ~/.config/clash/config.yaml <link>
+
+# 启动 clash
+nohup clash &
+
+# 关闭 clash
+ps aux | grep -v grep| grep "clash" | awk '{print $2}' | xargs  kill -9
+
+# 配置代理
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+
+# 然后你就可以上网冲浪了
 ```
+
 
 ## Run Clash as a Service
 ```bash
