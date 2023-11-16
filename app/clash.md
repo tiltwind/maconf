@@ -29,6 +29,28 @@ export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_pr
 # 然后你就可以上网冲浪了
 ```
 
+## macos 命令行设置代理
+
+```bash
+# 命令来查看所有网络服务的名称, 一般是 Wi-Fi
+networksetup -listallnetworkservices
+
+# 设置代理
+sudo networksetup -setwebproxy Wi-Fi 127.0.0.1 7890
+sudo networksetup -setsecurewebproxy Wi-Fi 127.0.0.1 7890
+sudo networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 7890
+
+
+# 查看代理
+networksetup -getwebproxy Wi-Fi
+networksetup -getsecurewebproxy Wi-Fi
+networksetup -setsocksfirewallproxy Wi-Fi
+
+# 关闭代理
+sudo networksetup -setwebproxystate Wi-Fi off
+sudo networksetup -setsecurewebproxystate Wi-Fi off
+sudo networksetup -setsocksfirewallproxy Wi-Fi off
+```
 
 ## Run Clash as a Service
 ```bash
