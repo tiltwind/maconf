@@ -40,8 +40,9 @@ sdk install java
 sdk install maven
 ```
 
-- jdk: [openjdk](https://jdk.java.net/) 
-- golang: [check version](https://github.com/golang/go/releases), [install guide](https://github.com/wongoo/doc/blob/master/lang/go/go-install.md)
+- jdk: [openjdk](https://jdk.java.net/)
+  - java oracle download page: https://www.oracle.com/java/technologies/downloads/archive/
+- golang: [check version](https://github.com/golang/go/releases), https://github.com/tiltwind/note-md/blob/master/go/go-install.md
 - python: `brew install python3`
 - rust
 - npm
