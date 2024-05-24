@@ -43,8 +43,8 @@ sdk install maven
 - jdk: [openjdk](https://jdk.java.net/)
   - java oracle download page: https://www.oracle.com/java/technologies/downloads/archive/
 - golang: [check version](https://github.com/golang/go/releases), https://github.com/tiltwind/note-md/blob/master/go/go-install.md
-- python: `brew install python3`
-- rust
+- python: `brew install python3`, https://github.com/tiltwind/note-md/blob/master/python/python-get-start.md
+- rust, 
 - npm
 - goland
 - clion
