@@ -50,12 +50,11 @@ sdk install maven
 - clion
 - inteliJ IDEA
 - postman
-- navicat premium： 收费
 - Beekeeper Studio: mysql 客户端，免费
+- innic: 免费sql客户端,支持访问 duckdb, https://www.innicdata.com/
 - studio 3T： mongodb客户端
 - [maven](https://maven.apache.org/download.cgi)
 - [redis](redis/redis.md)
-- mongodb
 - docker
 
 # apps for office
