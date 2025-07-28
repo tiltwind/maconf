@@ -64,18 +64,18 @@ sdk install maven
 - qq
 - lark: 飞书
 - dingding: 钉钉
-- mingdao: 敏捷工具，看公司需要什么
+- ~~mingdao: 敏捷工具，看公司需要什么~~
 
 ## apps for document
 - 注重效率和体验的笔记软件，个人免费: https://obsidian.md/
 - wps
 - youdao note
 - youdao dict
-- kindle: 电子书阅读
-- xmind: 思维导图，目前
+- ~~kindle: 电子书阅读~~
+- ~~xmind: 思维导图，目前~~
 - 网易邮箱大师
-- airmail 3： 邮箱客户端的另一个选择
-- KeyKey Typing Tutor: 是一款Mac OS X 上优秀的键盘打字练习工具
+- ~~airmail 3： 邮箱客户端的另一个选择~~
+- ~~KeyKey Typing Tutor: 是一款Mac OS X 上优秀的键盘打字练习工具~~
 - pandoc, 支持markdown 转换操作
 ```bash
 sudo port install pandoc
