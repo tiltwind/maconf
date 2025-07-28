@@ -29,7 +29,7 @@ markmeta_tags: app
 ## apps for management
 - recess
 - Tencent Lemon Lite: 腾讯系统清理优化软件，免费
-- cleanmydrive : 系统清理软件，收费
+- ~~cleanmydrive : 系统清理软件，收费~~
 
 
 ## apps for development
@@ -46,12 +46,14 @@ sdk install maven
 - python: `brew install python3`,  https://tiltwind.com/note/python/python-get-start.html
 - rust, 
 - npm
-- goland
-- clion
-- inteliJ IDEA
+- ~~goland~~
+- ~~clion~~
+- ~~inteliJ IDEA~~
+- trae, 字节AI编程IDE https://www.trae.ai/
 - postman
 - Beekeeper Studio: mysql 客户端，免费
 - innic: 免费sql客户端,支持访问 duckdb, https://www.innicdata.com/
+- duckdb, 单文件高性能数据库，兼容postgresql， https://duckdb.org/docs/installation/
 - studio 3T： mongodb客户端
 - [maven](https://maven.apache.org/download.cgi)
 - [redis](redis/redis.md)
