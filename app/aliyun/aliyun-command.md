@@ -21,13 +21,12 @@ package_name="$1"
 version_file=~/.version/"${package_name}.version"
 current_version=$(cat "$version_file" 2>/dev/null)
 if [[ ! "${current_version}" =~ ^[0-9]+$ ]]; then
-    current_version=1
+    current_version=0
 fi
-
-echo "current version: ${current_version}"
 
 new_version=$((current_version + 1))
 echo "${new_version}" > "${version_file}"
+echo "new version: ${new_version}"
 
 bucketname=ssjhkp-repo
 osspath="${package_name}/v${new_version}.zip"
