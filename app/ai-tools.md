@@ -50,7 +50,9 @@ vi ~/.claude-code-router/config.json, more config see https://github.com/musistu
 - 使用快捷键快速引用：可以通过快捷键（如 Mac 上的 Cmd+Option+K 或 Windows/Linux 上的 Alt+Ctrl+K）快速插入文件引用（例如 @File#L1-99）。
 - 共享诊断信息：IDE 中的诊断错误（如 lint 错误、语法错误等）可以在你工作时自动与 Claude Code 共享，帮助它更好地理解问题。
 
-**总结：token消耗太快,使用体验没有直接IDE好**
+**总结**：
+- 2025-09-10： 需要结合IDE有比较好的用户体验,但token消耗太快是一个比较大的问题
+- 
 
 # qwen code
 https://github.com/QwenLM/qwen-code
