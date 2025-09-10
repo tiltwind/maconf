@@ -54,14 +54,3 @@ vi ~/.claude-code-router/config.json, more config see https://github.com/musistu
 - 2025-09-10： 需要结合IDE有比较好的用户体验,但token消耗太快是一个比较大的问题
 - 
 
-# qwen code
-https://github.com/QwenLM/qwen-code
-
-```bash
-sudo npm install -g @qwen-code/qwen-code@latest
-qwen --version
-
-export OPENAI_API_KEY="xxxx"
-export OPENAI_BASE_URL="https://api.deepseek.com"
-export OPENAI_MODEL="deepseek-chat"
-```
