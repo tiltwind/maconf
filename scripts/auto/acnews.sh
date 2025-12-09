@@ -13,8 +13,6 @@ exec >> "$LOG_FILE" 2>&1
 echo "=================================================="
 echo "Script started at $(date)"
 
-export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
-
 # Check if Webhook ID is provided
 if [ -z "$1" ]; then
     echo "Error: Feishu Webhook ID is required as the first argument."
