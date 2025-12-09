@@ -1,25 +1,5 @@
-function gits(){
+function gitc(){
   git clone --depth=1 $1
-}
-
-function gitpulldirs(){
-  for p in `find . -type d -depth 1 `
-  do
-    cd $p
-
-    if [ -d .git ]
-    then
-      git pull -v
-    fi
-
-    cd ..
-
-  done
-}
-
-function gdelbranch(){
-    git push -d origin $1
-    git branch -d $1
 }
 
 function gpush() {
@@ -50,3 +30,40 @@ function gmerge() {
     fi
 }
 
+function gitpulldirs(){
+  for p in `find . -type d -depth 1 `
+  do
+    cd $p
+
+    if [ -d .git ]
+    then
+      git pull -v
+    fi
+
+    cd ..
+
+  done
+}
+
+function gitpushdirs(){
+  for p in `find . -type d -depth 1 `
+  do
+    cd $p
+
+    if [ -d .git ]
+    then
+      git add .
+      git commit -a -m "$1"
+      git push -v
+    fi
+
+    cd ..
+
+  done
+}
+
+
+function gitdelbranch(){
+    git push -d origin $1
+    git branch -d $1
+}

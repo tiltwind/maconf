@@ -2,7 +2,12 @@ function mm() {
    multidircmd 2 mvn $@
 }
 
+# 在多个目录中批量执行命令
+# 参数1: 指定后续有多少个参数属于命令部分
+# 后续参数: 拼接成要执行的完整命令
+# 剩余参数: 目标目录列表
 function multidircmd() {
+
     dcur=$(pwd)
     mcmd=""
     
