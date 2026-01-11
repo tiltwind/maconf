@@ -10,6 +10,7 @@ LOG_FILE="${SCRIPT_DIR}/163news.log"
 # Redirect stdout and stderr to the log file
 exec >> "$LOG_FILE" 2>&1
 
+echo $ANTHROPIC_API_KEY
 echo "=================================================="
 echo "Script started at $(date)"
 
@@ -30,7 +31,7 @@ source "${SCRIPT_DIR}/claude_code_web_parser_and_notify.sh"
 # 1. Define the prompt for Claude
 # We ask Claude to fetch the page and extract news.
 # We use --dangerously-skip-permissions to allow tool use (like curl/bash) without interactive approval.
-PROMPT="Please analyze https://www.163.com/ and extract the titles and urls of the top 10 latest news articles. Return ONLY the list, numbered 1-10. Do not include any other conversational text.Remove useless query string, like clickfrom, etc."
+PROMPT="Please analyze https://tech.163.com/ and extract the titles and urls of the top 10 latest news articles. Return ONLY the list, numbered 1-10. Do not include any other conversational text.Remove useless query string, like clickfrom, etc."
 
 # 2. Call the function
 claude_web_parser_and_notify "$WEBHOOK_ID" "$PROMPT"

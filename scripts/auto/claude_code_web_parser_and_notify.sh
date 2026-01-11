@@ -4,6 +4,9 @@
 # Arguments:
 #   $1: WEBHOOK_ID - The ID for the Feishu Webhook
 #   $2: PROMPT - The prompt to send to Claude
+#
+# 10 11 * * * /Users/hk/workspaces/github/tiltwind/maconf/scripts/auto/163news.sh xxx
+# 20 11 * * * /Users/hk/workspaces/github/tiltwind/maconf/scripts/auto/acnews.sh xxx
 function claude_web_parser_and_notify() {
     local WEBHOOK_ID="$1"
     local PROMPT="$2"
@@ -18,8 +21,11 @@ function claude_web_parser_and_notify() {
         return 1
     fi
 
+    # config deepseek env https://api-docs.deepseek.com/zh-cn/guides/anthropic_api
+    source /Users/hk/.claude/.auto_profile
+    echo $ANTHROPIC_BASE_URL
 
-    export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+    # export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
     # Execute Claude
     # -p / --print: Print the result to stdout
