@@ -29,6 +29,26 @@ export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_pr
 # 然后你就可以上网冲浪了
 ```
 
+## resetful api 控制
+
+```bash
+nohup clash -ext-ctl "127.0.0.1:9191" > /opt/clash/clash.log &
+
+# 列出所有代理
+curl http://127.0.0.1:9191/proxies
+
+# 查看节点
+curl -s http://127.0.0.1:9191/proxies | jq '.proxies["国外流量"].all'
+
+# 设置节点
+curl -X PUT -H "Content-Type: application/json" \
+  http://127.0.0.1:9191/proxies/国外流量 \
+  -d '{"name": "美国-08"}'
+
+# 查看当前生效节点
+curl -s http://127.0.0.1:9191/proxies/国外流量 | jq '.now'
+```
+
 ## macos 命令行设置代理
 
 ```bash
