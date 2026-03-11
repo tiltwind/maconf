@@ -58,6 +58,64 @@ clean_dir() {
     fi
 }
 
+# Clean a directory only if it hasn't been modified in N days (default 30)
+clean_dir_if_stale() {
+    local label="$1"
+    local dir="$2"
+    local days="${3:-30}"
+    if [[ -d "$dir" ]]; then
+        # Check if any file inside was modified within the last N days
+        local recent
+        recent=$(find "$dir" -type f -mtime -"$days" -print -quit 2>/dev/null)
+        if [[ -n "$recent" ]]; then
+            return  # Still in use, skip
+        fi
+        local size
+        size=$(dir_size "$dir") || size=0
+        size=${size:-0}
+        if (( size > 0 )); then
+            echo "  $label (stale ${days}d+): $(human_size "$size") — $dir"
+            if [[ "$DRY_RUN" == false ]]; then
+                rm -rf "$dir" 2>/dev/null || true
+            fi
+            TOTAL_FREED=$((TOTAL_FREED + size))
+        fi
+    fi
+}
+
+# Find and clean named directories recursively under a base path
+clean_find_dirs() {
+    local label="$1"
+    local dirname="$2"
+    local base="$3"
+    local max_depth="${4:-6}"
+    if [[ ! -d "$base" ]]; then
+        return
+    fi
+    local tmpfile
+    tmpfile=$(mktemp) || return
+    find "$base" -maxdepth "$max_depth" -type d -name "$dirname" -not -path "*/.*" -print0 2>/dev/null > "$tmpfile"
+    local total_size=0
+    local count=0
+    while IFS= read -r -d '' dir; do
+        local size
+        size=$(dir_size "$dir") || size=0
+        size=${size:-0}
+        if (( size > 0 )); then
+            total_size=$((total_size + size))
+            count=$((count + 1))
+            if [[ "$DRY_RUN" == false ]]; then
+                rm -rf "$dir" 2>/dev/null || true
+            fi
+        fi
+    done < "$tmpfile"
+    rm -f "$tmpfile"
+    if (( total_size > 0 )); then
+        echo "  $label: $(human_size "$total_size") ($count dirs)"
+        TOTAL_FREED=$((TOTAL_FREED + total_size))
+    fi
+}
+
 clean_files() {
     local label="$1"
     local pattern="$2"
@@ -107,8 +165,15 @@ FIREFOX_WAS_RUNNING=false
 
 echo "🧹 macOS App Caches"
 
-clean_dir "User cache" "$HOME/Library/Caches"
-clean_dir "User logs" "$HOME/Library/Logs"
+# Clean individual app caches only if not used in 30+ days
+if [[ -d "$HOME/Library/Caches" ]]; then
+    for cache_dir in "$HOME/Library/Caches"/*/; do
+        [[ -d "$cache_dir" ]] || continue
+        cache_name=$(basename "$cache_dir")
+        clean_dir_if_stale "App cache [$cache_name]" "$cache_dir" 30
+    done
+fi
+clean_dir_if_stale "User logs" "$HOME/Library/Logs" 30
 clean_dir "Safari cache" "$HOME/Library/Safari/LocalStorage"
 clean_dir "Xcode DerivedData" "$HOME/Library/Developer/Xcode/DerivedData"
 clean_dir "Xcode Archives" "$HOME/Library/Developer/Xcode/Archives"
@@ -227,6 +292,13 @@ if [[ -d "$HOME/.local/share/virtualenvs" ]]; then
     clean_dir "pipenv virtualenvs" "$HOME/.local/share/virtualenvs"
 fi
 
+# Find and clean project-level Python venvs and caches
+clean_find_dirs "venv (all projects)" "venv" "$HOME" 5
+clean_find_dirs ".venv (all projects)" ".venv" "$HOME" 5
+clean_find_dirs "__pycache__ (all projects)" "__pycache__" "$HOME" 8
+clean_find_dirs ".eggs (all projects)" ".eggs" "$HOME" 6
+clean_find_dirs "*.egg-info (all projects)" "*.egg-info" "$HOME" 6
+
 # Use pip cache purge if available
 if command -v pip3 &>/dev/null && [[ "$DRY_RUN" == false ]]; then
     pip3 cache purge 2>/dev/null || true
@@ -245,6 +317,9 @@ clean_dir "yarn cache (alt)" "$HOME/.cache/yarn"
 clean_dir "pnpm store" "$HOME/Library/pnpm/store"
 clean_dir "pnpm cache" "$HOME/.cache/pnpm"
 clean_dir "bun cache" "$HOME/.bun/install/cache"
+
+# Find and clean all node_modules directories under $HOME
+clean_find_dirs "node_modules (all projects)" "node_modules" "$HOME" 6
 
 # Use npm/yarn/pnpm cache clean if available
 if command -v npm &>/dev/null && [[ "$DRY_RUN" == false ]]; then
