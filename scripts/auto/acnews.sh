@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Setup environment variables for scheduled execution (cron/launchd)
-export PATH="/Users/hk/.nvm/versions/node/v22.20.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="/Users/hk/.nvm/versions/node/v22.20.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/hk/.local/bin:$PATH"
 export HOME="/Users/hk"
 export XDG_CONFIG_HOME="${HOME}/.config"
 export USER="hk"
