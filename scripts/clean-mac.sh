@@ -175,10 +175,6 @@ if [[ -d "$HOME/Library/Caches" ]]; then
 fi
 clean_dir_if_stale "User logs" "$HOME/Library/Logs" 30
 clean_dir "Safari cache" "$HOME/Library/Safari/LocalStorage"
-clean_dir "Xcode DerivedData" "$HOME/Library/Developer/Xcode/DerivedData"
-clean_dir "Xcode Archives" "$HOME/Library/Developer/Xcode/Archives"
-clean_dir "Xcode iOS DeviceSupport" "$HOME/Library/Developer/Xcode/iOS DeviceSupport"
-clean_dir "CoreSimulator caches" "$HOME/Library/Developer/CoreSimulator/Caches"
 clean_dir "Composer cache" "$HOME/Library/Composer/cache"
 
 # Clean .DS_Store files from home
@@ -186,6 +182,38 @@ if [[ "$DRY_RUN" == false ]]; then
     find "$HOME" -maxdepth 4 -name ".DS_Store" -delete 2>/dev/null || true
 fi
 echo "  .DS_Store files: cleaned (depth 4)"
+
+echo ""
+
+# ─── Xcode ─────────────────────────────────────────────────────────────────────
+
+echo "🔨 Xcode"
+
+XCODE_DEV="$HOME/Library/Developer/Xcode"
+if [[ -d "$XCODE_DEV" ]] || [[ -d "$HOME/Library/Developer/CoreSimulator" ]]; then
+    clean_dir "DerivedData" "$XCODE_DEV/DerivedData"
+    clean_dir "Archives" "$XCODE_DEV/Archives"
+    clean_dir "iOS DeviceSupport" "$XCODE_DEV/iOS DeviceSupport"
+    clean_dir "watchOS DeviceSupport" "$XCODE_DEV/watchOS DeviceSupport"
+    clean_dir "tvOS DeviceSupport" "$XCODE_DEV/tvOS DeviceSupport"
+    clean_dir "visionOS DeviceSupport" "$XCODE_DEV/visionOS DeviceSupport"
+    clean_dir "iOS Device Logs" "$XCODE_DEV/iOS Device Logs"
+    clean_dir "Products" "$XCODE_DEV/Products"
+    clean_dir "DocumentationCache" "$XCODE_DEV/DocumentationCache"
+    clean_dir "UserData IB Support" "$XCODE_DEV/UserData/IB Support"
+    clean_dir "UserData IDEEditorInteractivityHistory" "$XCODE_DEV/UserData/IDEEditorInteractivityHistory"
+    clean_dir "Xcode app cache" "$HOME/Library/Caches/com.apple.dt.Xcode"
+    clean_dir "SwiftPM cache" "$HOME/Library/Caches/org.swift.swiftpm"
+    clean_dir "CoreSimulator caches" "$HOME/Library/Developer/CoreSimulator/Caches"
+    clean_dir "CoreSimulator Temp" "$HOME/Library/Developer/CoreSimulator/Temp"
+
+    # Delete unavailable / shutdown simulator devices
+    if command -v xcrun &>/dev/null && [[ "$DRY_RUN" == false ]]; then
+        xcrun simctl delete unavailable 2>/dev/null || true
+    fi
+else
+    echo "  Xcode not installed, skipping."
+fi
 
 echo ""
 
@@ -378,6 +406,109 @@ clean_dir "Quick Look cache" "$HOME/Library/Caches/com.apple.QuickLook.thumbnail
 
 echo ""
 
+# ─── QQ ────────────────────────────────────────────────────────────────────────
+
+echo "🐧 QQ"
+
+QQ_WAS_RUNNING=false
+QQ_CONTAINER="$HOME/Library/Containers/com.tencent.qq"
+QQ_CONTAINER_NEW="$HOME/Library/Containers/com.tencent.QQ"
+QQ_SUPPORT="$HOME/Library/Application Support/QQ"
+if [[ -d "$QQ_CONTAINER" || -d "$QQ_CONTAINER_NEW" || -d "$QQ_SUPPORT" ]]; then
+    if quit_app "QQ"; then
+        QQ_WAS_RUNNING=true
+    fi
+    clean_dir "QQ system cache" "$HOME/Library/Caches/com.tencent.qq"
+    clean_dir "QQ system cache (new)" "$HOME/Library/Caches/com.tencent.QQ"
+    clean_dir "QQ container Caches" "$QQ_CONTAINER/Data/Library/Caches"
+    clean_dir "QQ container Caches (new)" "$QQ_CONTAINER_NEW/Data/Library/Caches"
+    # New QQ (NT) stores large media under Application Support
+    if [[ -d "$QQ_SUPPORT" ]]; then
+        clean_find_dirs "QQ nt_qq thumb" "thumb" "$QQ_SUPPORT" 8
+        clean_find_dirs "QQ nt_qq temp" "temp" "$QQ_SUPPORT" 8
+        clean_find_dirs "QQ nt_qq log" "log" "$QQ_SUPPORT" 6
+    fi
+else
+    echo "  QQ not installed, skipping."
+fi
+
+echo ""
+
+# ─── WeChat ────────────────────────────────────────────────────────────────────
+
+echo "💬 WeChat"
+
+WECHAT_WAS_RUNNING=false
+WECHAT_CONTAINER="$HOME/Library/Containers/com.tencent.xinWeChat"
+WECHAT_SUPPORT="$HOME/Library/Application Support/com.tencent.xinWeChat.WeChatAppEx"
+WECHAT_SUPPORT_ALT="$HOME/Library/Application Support/WeChat"
+if [[ -d "$WECHAT_CONTAINER" || -d "$WECHAT_SUPPORT" || -d "$WECHAT_SUPPORT_ALT" ]]; then
+    if quit_app "WeChat"; then
+        WECHAT_WAS_RUNNING=true
+    fi
+    if quit_app "微信"; then
+        WECHAT_WAS_RUNNING=true
+    fi
+    clean_dir "WeChat system cache" "$HOME/Library/Caches/com.tencent.xinWeChat"
+    clean_dir "WeChat container Caches" "$WECHAT_CONTAINER/Data/Library/Caches"
+    clean_dir "WeChatAppEx cache" "$WECHAT_SUPPORT"
+
+    # Chat media temp (safe: already-delivered cached media per account/session)
+    if [[ -d "$WECHAT_CONTAINER/Data/Library/Application Support" ]]; then
+        clean_find_dirs "WeChat MessageTemp" "MessageTemp" "$WECHAT_CONTAINER/Data/Library/Application Support" 8
+        clean_find_dirs "WeChat CDNTemp" "CDNTemp" "$WECHAT_CONTAINER/Data/Library/Application Support" 8
+        clean_find_dirs "WeChat wxacache" "wxacache" "$WECHAT_CONTAINER/Data/Library/Application Support" 8
+        clean_find_dirs "WeChat WebKit cache" "WebKit" "$WECHAT_CONTAINER/Data/Library/Caches" 6
+    fi
+else
+    echo "  WeChat not installed, skipping."
+fi
+
+echo ""
+
+# ─── Feishu / Lark ─────────────────────────────────────────────────────────────
+
+echo "🪶 Feishu / Lark"
+
+LARK_WAS_RUNNING=false
+LARK_SUPPORT="$HOME/Library/Application Support/Lark"
+LARK_SUPPORT_CN="$HOME/Library/Application Support/Feishu"
+LARK_SUPPORT_BD="$HOME/Library/Application Support/LarkShell"
+if [[ -d "$LARK_SUPPORT" || -d "$LARK_SUPPORT_CN" || -d "$LARK_SUPPORT_BD" ]]; then
+    # Try common process names for Lark/Feishu on macOS
+    for proc in "Lark" "Feishu" "飞书" "LarkShell"; do
+        if quit_app "$proc"; then
+            LARK_WAS_RUNNING=true
+        fi
+    done
+
+    for base in "$LARK_SUPPORT" "$LARK_SUPPORT_CN" "$LARK_SUPPORT_BD"; do
+        [[ -d "$base" ]] || continue
+        label=$(basename "$base")
+        clean_dir "[$label] Cache" "$base/Cache"
+        clean_dir "[$label] Code Cache" "$base/Code Cache"
+        clean_dir "[$label] GPUCache" "$base/GPUCache"
+        clean_dir "[$label] ShaderCache" "$base/ShaderCache"
+        clean_dir "[$label] GrShaderCache" "$base/GrShaderCache"
+        clean_dir "[$label] Service Worker/CacheStorage" "$base/Service Worker/CacheStorage"
+        clean_dir "[$label] Service Worker/ScriptCache" "$base/Service Worker/ScriptCache"
+        clean_dir "[$label] Crashpad" "$base/Crashpad"
+        # Per-user sdk_storage media caches
+        clean_find_dirs "[$label] sdk_storage image" "image" "$base" 6
+        clean_find_dirs "[$label] sdk_storage video" "video" "$base" 6
+        clean_find_dirs "[$label] sdk_storage file_cache" "file_cache" "$base" 6
+        clean_find_dirs "[$label] log" "log" "$base" 6
+    done
+
+    clean_dir "Lark system cache" "$HOME/Library/Caches/com.electron.lark"
+    clean_dir "Lark system cache (bd)" "$HOME/Library/Caches/com.bytedance.lark"
+    clean_dir "Feishu system cache" "$HOME/Library/Caches/com.bytedance.feishu"
+else
+    echo "  Feishu/Lark not installed, skipping."
+fi
+
+echo ""
+
 # ─── Summary ────────────────────────────────────────────────────────────────────
 
 echo "════════════════════════════════════════════════"
@@ -389,7 +520,7 @@ else
 fi
 echo "════════════════════════════════════════════════"
 
-# Remind about closed browsers
+# Remind about closed apps
 if [[ "$CHROME_WAS_RUNNING" == true ]]; then
     echo ""
     echo "ℹ  Google Chrome was closed for cleaning. Restart it manually."
@@ -397,4 +528,16 @@ fi
 if [[ "$FIREFOX_WAS_RUNNING" == true ]]; then
     echo ""
     echo "ℹ  Firefox was closed for cleaning. Restart it manually."
+fi
+if [[ "$QQ_WAS_RUNNING" == true ]]; then
+    echo ""
+    echo "ℹ  QQ was closed for cleaning. Restart it manually."
+fi
+if [[ "$WECHAT_WAS_RUNNING" == true ]]; then
+    echo ""
+    echo "ℹ  WeChat was closed for cleaning. Restart it manually."
+fi
+if [[ "$LARK_WAS_RUNNING" == true ]]; then
+    echo ""
+    echo "ℹ  Feishu/Lark was closed for cleaning. Restart it manually."
 fi
