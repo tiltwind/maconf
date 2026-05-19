@@ -116,6 +116,40 @@ clean_find_dirs() {
     fi
 }
 
+# Find and clean Maven `target` directories whose parent contains a pom.xml
+clean_maven_targets() {
+    local label="$1"
+    local base="$2"
+    local max_depth="${3:-6}"
+    if [[ ! -d "$base" ]]; then
+        return
+    fi
+    local tmpfile
+    tmpfile=$(mktemp) || return
+    find "$base" -maxdepth "$max_depth" -type d -name "target" -not -path "*/.*" -print0 2>/dev/null > "$tmpfile"
+    local total_size=0
+    local count=0
+    while IFS= read -r -d '' dir; do
+        local parent="${dir%/target}"
+        [[ -f "$parent/pom.xml" ]] || continue
+        local size
+        size=$(dir_size "$dir") || size=0
+        size=${size:-0}
+        if (( size > 0 )); then
+            total_size=$((total_size + size))
+            count=$((count + 1))
+            if [[ "$DRY_RUN" == false ]]; then
+                rm -rf "$dir" 2>/dev/null || true
+            fi
+        fi
+    done < "$tmpfile"
+    rm -f "$tmpfile"
+    if (( total_size > 0 )); then
+        echo "  $label: $(human_size "$total_size") ($count dirs)"
+        TOTAL_FREED=$((TOTAL_FREED + total_size))
+    fi
+}
+
 clean_files() {
     local label="$1"
     local pattern="$2"
@@ -377,6 +411,17 @@ if command -v cargo-cache &>/dev/null && [[ "$DRY_RUN" == false ]]; then
 elif command -v cargo &>/dev/null && [[ "$DRY_RUN" == false ]]; then
     cargo cache --autoclean 2>/dev/null || true
 fi
+
+echo ""
+
+# ─── Java / Maven ──────────────────────────────────────────────────────────────
+
+echo "☕ Java / Maven"
+
+# Delete Maven `target/` build outputs anywhere under $HOME (only when a pom.xml
+# sits beside the target directory, so we don't nuke unrelated `target` folders).
+# Depth 10 covers deeply-nested multi-module layouts (e.g. workspaces/<org>/<repo>/<group>/<module>/target).
+clean_maven_targets "Maven target (all projects)" "$HOME" 10
 
 echo ""
 
