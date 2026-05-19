@@ -13,18 +13,21 @@ markmeta_tags: app
 - [git](https://git-scm.com/download/mac), add `~/.gitconfig`, copy old ssh keys to `~/.ssh`
   - [A syntax-highlighting pager for git, diff, and grep output](https://dandavison.github.io/delta/introduction.html)
 - [iterm2](iterm2.md), see [install steps](vim/vim-install.md)
-  - [vim](vim/)
-  - nvim: `sudo port install neovim`, add `~/.config/nvim/init.vim` following [FAQ](https://github.com/neovim/neovim/wiki/FAQ)
+  - 编辑窗口支持滑动: settings - advanced - Scroll wheel sends arrow keys when in alternate screen mode = true 
+  - ~~[vim](vim/)~~
+  - ~~nvim: `sudo port install neovim`, add `~/.config/nvim/init.vim` following [FAQ](https://github.com/neovim/neovim/wiki/FAQ)~~
 - xcode-select --install
 - [macport](https://www.macports.org/install.php)
 - chrome
 - firefox
 - xunlei
-- clashx
 - [sublime text](https://www.sublimetext.com/)
 
-- ~~[homebrew](https://docs.brew.sh/Installation),brew不建议使用,更建议使用macport~~
+- [homebrew](https://docs.brew.sh/Installation)
 - ~~shadowsocks~~
+- ~~clashx~~
+- speedcat: https://scweb.cc/
+- clash vege: https://xn--mes358aby2apfg.site/
 
 ## apps for management
 - recess
@@ -45,14 +48,20 @@ sdk install maven
 - golang: [check version](https://github.com/golang/go/releases),  https://tiltwind.com/note/go/go-install.html
 - python: `brew install python3`,  https://tiltwind.com/note/python/python-get-start.html
 - rust, 
-- npm
+- npm: `brew install node`
+  - pnpm: `brew install pnpm`
+- claude code: `curl -fsSL https://claude.ai/install.sh | bash`
+  - CLI proxy that reduces LLM token: https://github.com/rtk-ai/rtk
+- codex: https://github.com/openai/codex , `npm install -g @openai/codex`
+- trae, 字节AI编程IDE https://www.trae.ai/
+- qoder
+- codebuddy
 - ~~goland~~
 - ~~clion~~
 - ~~inteliJ IDEA~~
-- trae, 字节AI编程IDE https://www.trae.ai/
-- postman
+- ~~postman~~
 - Beekeeper Studio: mysql 客户端，免费
-- innic: 免费sql客户端,支持访问 duckdb, https://www.innicdata.com/
+- ~~innic: 免费sql客户端,支持访问 duckdb, https://www.innicdata.com/~~
 - duckdb, 单文件高性能数据库，兼容postgresql， https://duckdb.org/docs/installation/
 - studio 3T： mongodb客户端
 - [maven](https://maven.apache.org/download.cgi)
