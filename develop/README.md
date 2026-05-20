@@ -52,6 +52,7 @@ sdk install maven
   - pnpm: `brew install pnpm`
 - claude code: `curl -fsSL https://claude.ai/install.sh | bash`
   - CLI proxy that reduces LLM token: https://github.com/rtk-ai/rtk
+  - claud code ui: `npm install -g @cloudcli-ai/cloudcli && cloudcli` , https://github.com/siteboon/claudecodeui
 - codex: https://github.com/openai/codex , `npm install -g @openai/codex`
 - trae, 字节AI编程IDE https://www.trae.ai/
 - qoder
