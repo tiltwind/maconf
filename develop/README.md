@@ -47,12 +47,23 @@ sdk install maven
   - java oracle download page: https://www.oracle.com/java/technologies/downloads/archive/
 - golang: [check version](https://github.com/golang/go/releases),  https://tiltwind.com/note/go/go-install.html
 - python: `brew install python3`,  https://tiltwind.com/note/python/python-get-start.html
+```bash
+alias python="python3"
+alias pip="pip3"
+
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
 - rust, 
 - npm: `brew install node`
   - pnpm: `brew install pnpm`
+  - npm mirror: `npm config set registry https://registry.npmmirror.com`
+
 - claude code: `curl -fsSL https://claude.ai/install.sh | bash`
   - CLI proxy that reduces LLM token: https://github.com/rtk-ai/rtk
   - claud code ui: `npm install -g @cloudcli-ai/cloudcli && cloudcli` , https://github.com/siteboon/claudecodeui
+
 - codex: https://github.com/openai/codex , `npm install -g @openai/codex`
 - trae, 字节AI编程IDE https://www.trae.ai/
 - qoder
