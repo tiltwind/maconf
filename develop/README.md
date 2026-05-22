@@ -24,6 +24,13 @@ markmeta_tags: app
 - [sublime text](https://www.sublimetext.com/)
 
 - [homebrew](https://docs.brew.sh/Installation)
+```bash
+git -C "$(brew --repo)" remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+git -C "$(brew --repo homebrew/core)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+git -C "$(brew --repo homebrew/cask)" remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+```
 - ~~shadowsocks~~
 - ~~clashx~~
 - speedcat: https://scweb.cc/
@@ -53,6 +60,7 @@ alias pip="pip3"
 
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+- uv: `brew install uv`
 
 
 - rust, 
