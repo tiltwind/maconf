@@ -183,3 +183,17 @@ docker rm -f <name>          # 删除容器
 docker volume ls             # 查看数据卷
 ```
 
+
+
+## docker-compose
+```bash
+brew install docker-compose
+docker-compose up
+docker-compose down
+
+# 显式指定文件
+docker-compose -f docker-compose.yml up
+# 后台启动
+docker-compose -f docker-compose.yml up -d
+
+```
